@@ -1,7 +1,19 @@
 <div class="container">
+    
     <div class="row">
-        <div class="col-sm-6">
-            
+		<div class="col-sm-12">
+			<img src="/assets/img/burger.png" alt="burger" class="img-responsive center-block">
+		</div>	
+	</div>
+    
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            <h1>Eat-Da-Burger!</h1>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-sm-6">          
             <ul>
                 {{#each burgers}} 
                     {{#unless this.devoured}}
@@ -31,7 +43,6 @@
     </div>
 
     <div class="row">
-
 		<div class="col-sm-12 text-center">
 			<form class="create-update-form" action="burgers/create" method="POST">
 				<div class="form-group">
