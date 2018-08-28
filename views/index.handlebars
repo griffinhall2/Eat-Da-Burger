@@ -15,19 +15,17 @@
     <div class="row">
         <div class="col-sm-6">          
             <ul>
-                		{{#each burgers}}
-							{{#unless devoured}}
-								<form method="POST" action="/burgers/updateOne/{{burger_id}}?_method=PUT" class="form-inline">
-									<div class="form-group">
-										<input type="hidden" name="devoured" value="1"/>
-										<label class="sr-only">Delicious burger</label>
-										<p class="form-control-static">{{ burger_name }}</p>
-									</div>
-									<button id="burger-id{{burger_id}}" type="submit" class="btn btn-default">DEVOUR!!</button>
-									<hr>
-								</form>
-							{{/unless}}
-						{{/each}}
+                {{#each burgers}} 
+                    {{#unless this.devoured}}
+                        <li>
+                            {{this.id}}. {{this.burger_name}}
+                            <form action="burgers/updateOne/{{this.id}}?_method=PUT" method="POST">
+                                <input type="hidden" name="devoured" value="1">
+                                <button class="btn" type="submit">Devour It!</button>
+                            </form>
+                        </li>
+                    {{/unless}} 
+                {{/each}}
             </ul>
         </div>
     </div>
@@ -53,7 +51,7 @@
                     <br>
                     <button class="btn btn-primary" type="submit">Submit</button>
 					<br>
-                    <h2">Enter a burger you want to eat and Click the "Submit" button.</h2>
+                    <h2>Enter a burger you want to eat and Click the "Submit" button.</h2>
 				</div>
 			</form>
 		</div>
