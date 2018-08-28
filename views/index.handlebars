@@ -15,17 +15,19 @@
     <div class="row">
         <div class="col-sm-6">          
             <ul>
-                {{#each burgers}} 
-                    {{#unless this.devoured}}
-                        <li>
-                            {{this.id}}. {{this.burger_name}}
-                            <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
-                                <input type="hidden" name="devoured" value="1">
-                                <button class="btn" type="submit">Devour It!</button>
-                            </form>
-                        </li>
-                    {{/unless}} 
-                {{/each}}
+                		{{#each burgers}}
+							{{#unless devoured}}
+								<form method="POST" action="/burgers/updateOne/{{burger_id}}?_method=PUT" class="form-inline">
+									<div class="form-group">
+										<input type="hidden" name="devoured" value="1"/>
+										<label class="sr-only">Delicious burger</label>
+										<p class="form-control-static">{{ burger_name }}</p>
+									</div>
+									<button id="burger-id{{burger_id}}" type="submit" class="btn btn-default">DEVOUR!!</button>
+									<hr>
+								</form>
+							{{/unless}}
+						{{/each}}
             </ul>
         </div>
     </div>
@@ -44,11 +46,14 @@
 
     <div class="row">
 		<div class="col-sm-12 text-center">
-			<form class="create-update-form" action="burgers/create" method="POST">
-				<div class="form-group">
-					<textarea type="text" name="name"></textarea>
-                    <button class="btn btn-default" type="submit">Submit</button>
-					<h5 class="text-center">Enter a burger you want to eat and Click the "Submit" button.</h5>
+			<form class="create-update-form" action="burgers/insertOne" method="POST">
+				<div class="form-group mx-sm-3 mb-2">
+                    <input type="text" class="form-control" placeholder="Burger">
+                    
+                    <br>
+                    <button class="btn btn-primary" type="submit">Submit</button>
+					<br>
+                    <h2">Enter a burger you want to eat and Click the "Submit" button.</h2>
 				</div>
 			</form>
 		</div>
