@@ -3,15 +3,15 @@ var router = express.Router();
 var burger = require("../models/burger.js");
 
 router.get('/', function(req,res) {
-	res.redirect('/burgers')
+	res.redirect('/index')
 });
 
-router.get("/burgers", function (req, res) {
+router.get("/index", function (req, res) {
     burger.selectAll(function (data) {
         var hbsObject = {
             burgers: data
         }
-        res.render("burgers", hbsObject);
+        res.render("index", hbsObject);
     });
 });
 
